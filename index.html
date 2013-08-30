@@ -29,9 +29,13 @@
 			font-weight: bold;
 			font-size: 13px;
 		}
+		.tc label{
+			font-weight: 100;
+		}
 		input[type=text]{
 			padding: 2px 5px;
 			width: 232px;
+			border: 1px solid #ccc;
 		}
 		button{
 			color: black;
@@ -55,8 +59,8 @@
 	
 	<!-- haven't used anything more complicated than a div since it's a simple page -->
 	<div>
+		<h1>My lovely Form</h1>
 		<form id="personalDetails">
-			<h1>My lovely Form</h1>
 			<ul>
 				<li>
 					<label for="tName">Name</label>
@@ -71,7 +75,7 @@
 					<label for="tPhone">Phone</label>
 					<input id="tPhone" type="text" placeholder="e.g. 40 343434" />
 				</li>
-				<li>
+				<li class="tc">
 					<label for="tTC">I read the TandC</label>
 					<input id="tTC" type="checkbox" />
 				</li>
@@ -83,7 +87,22 @@
 	</div>
 	
 	<script>
+		(function(){
 
+			var form = document.getElementById('personalDetails'),
+			nameInput = document.getElementById('tName'),
+			emailInput = document.getElementById('tEmail'),
+			submitBtn = document.getElementById('bSubmit'); 
+			
+			// events
+			submitBtn.onclick = function(e){ return validateForm(); }
+			
+			function validateForm(){
+				console.log('validate called');
+				return false;
+			}
+			
+		}());
 	</script>
 </body>
 </html>
