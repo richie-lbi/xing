@@ -29,7 +29,7 @@
 			font-weight: bold;
 			font-size: 13px;
 		}
-		.tc label{
+		label.tc{
 			font-weight: 100;
 		}
 		input[type=text]{
@@ -62,6 +62,7 @@
 			width: 10px;
 			margin-left: -10px;
 			position: absolute;
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -85,8 +86,8 @@
 					<label for="tPhone">Phone</label>
 					<input id="tPhone" type="text" placeholder="e.g. 40 343434" />
 				</li>
-				<li class="tc">
-					<label for="cTC">I read the TandC</label>
+				<li>
+					<label for="cTC" class="tc">I read the TandC</label>
 					<input id="cTC" type="checkbox" />
 				</li>
 				<li>
@@ -98,13 +99,21 @@
 	
 	<script>
 		
-		// ASSUMPTION ON THE BREIF
+		// ASSUMPTIONS ON THE BREIF
+		
 		// I interpreted 'modern browsers' in the brief as IE8 and above.
-		// Although someCSS and HTML5 elements I used aren't supported on IE8,
+		// Although some CSS and HTML5 elements I used aren't supported on IE8,
 		// they degrade in a way which doesn't affect the functionality of the form
 		
-		// Even thought the brief didn't specify TC's were mandatory, I assumed the 
-		// box would need to be ticked for successful submission
+		// Even though the brief didn't specify TC's were mandatory, I assumed the 
+		// checkbox would need to be ticked for successful submission
+		
+		// With the name validation field I've assumed that white space shouldn't 
+		// count as part of the 3 characters and so ignored any spaces included
+		// in the input field
+		
+		// Since there wasn't a PSD to match the font-family/size I've assumed the 
+		// font was Arial (the font sizes are also approximate)
 		
 		var xing = (function(){
 
@@ -131,7 +140,7 @@
 				showValidationErrors(nameInput,validName);
 				showValidationErrors(tcInput,validTC);
 
-				console.log('validEmail: ',validEmail, ' validName: ', validName);
+				console.log('validEmail: ',validEmail, ' validName: ', validName, ' validTC: ', validTC);
 				return false;
 			}
 			
@@ -152,6 +161,7 @@
 			}
 			
 			function validateName(){
+				if(nameInput.value.replace(/\s+/g, '').length > 2) return true;
 				return false;
 			}
 			
