@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <head>
 	<title>Xing Sign Up Form</title>
 	<style>
@@ -49,6 +49,7 @@
 		}
 		button:hover{
 			cursor: pointer;
+			background: #D4D94E;
 		}
 		div{
 			width: 398px;
@@ -64,7 +65,7 @@
 			<ul>
 				<li>
 					<label for="tName">Name</label>
-					<!-- using html5 placeholder attribute could use Modernizr to feature detect on older browsers to provide alternative -->
+					<!-- using html5 placeholder attribute, could use Modernizr to feature detect on older browsers to provide alternative -->
 					<input id="tName" type="text" placeholder="Your Name" />
 				</li>
 				<li>
@@ -87,7 +88,7 @@
 	</div>
 	
 	<script>
-		(function(){
+		var xing = (function(){
 
 			var form = document.getElementById('personalDetails'),
 			nameInput = document.getElementById('tName'),
@@ -97,8 +98,18 @@
 			// events
 			submitBtn.onclick = function(e){ return validateForm(); }
 			
-			function validateForm(){
-				console.log('validate called');
+			function validateForm(){			
+				var validEmail = validateEmail();
+				var validName = validateName();
+				console.log('validEmail: ',validEmail, ' validName: ', validName);
+				return false;
+			}
+			
+			function validateEmail(){
+				return false;
+			}
+			
+			function validateName(){
 				return false;
 			}
 			
