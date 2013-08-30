@@ -140,10 +140,10 @@
 				showValidationErrors(nameInput,validName);
 				showValidationErrors(tcInput,validTC);
 
-				console.log('validEmail: ',validEmail, ' validName: ', validName, ' validTC: ', validTC);
 				return false;
 			}
 			
+			// DOM stuff
 			function showValidationErrors(el, valid){
 				if(!valid){
 					el.parentNode.setAttribute('class','invalid');
@@ -152,12 +152,15 @@
 				}
 			}
 		
+			// Validation checkers
 			function validateTC(){
 				if(tcInput.checked === true) return true;
 				return false;
 			}
 			
 			function validateEmail(){
+				var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				if(filter.test(emailInput.value)) return true;
 				return false;
 			}
 			
