@@ -68,7 +68,7 @@
 </head>
 <body>
 	
-	<!-- haven't used anything more complicated than a div since it's a simple page -->
+	<!-- haven't used anything more complicated than a div without class or ID since it's a simple page with only 1 div on it -->
 	<div>
 		<h1>My lovely Form</h1>
 		<form id="personalDetails">
@@ -99,7 +99,7 @@
 	
 	<script>
 		
-		// ASSUMPTIONS ON THE BREIF
+		// MY ASSUMPTIONS ON THE BREIF
 		
 		// I interpreted 'modern browsers' in the brief as IE8 and above.
 		// Although some CSS and HTML5 elements I used aren't supported on IE8,
@@ -153,6 +153,7 @@
 			}
 		
 			function validateTC(){
+				if(tcInput.checked === true) return true;
 				return false;
 			}
 			
