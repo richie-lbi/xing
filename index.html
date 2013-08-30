@@ -2,12 +2,69 @@
 <head>
 	<title>Xing Sign Up Form</title>
 	<style>
+		body *{
+			margin: 0;
+			padding: 0;
+			font-family: Helvetica, sans-serif;
+			font-size: 11px;
+		}
+	
+		h1{
+			font-size: 14px;
+			border-bottom: 1px solid #ccc;
+			padding: 5px 0;
+			margin-bottom: 10px;
+		}
+		li{
+			list-style: none;
+			margin-bottom: 5px;
+		}
+		label{
+			float: left;
+			width: 150px;
+			display: block;
+			font-weight: bold;
+		}
+		input[type=text]{
+			padding: 2px 5px;
+			width: 232px;
+		}
+		button{
+			background: #E1E361;
+			color: black;
+			border: 1px solid #BDC400;
+			padding: 10px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+		}
 	</style>
 </head>
 <body>
-	<div>
-		<h1>My lovely form</h1>
-	</div>
+
+	<form id="personalDetails">
+		<h1>My lovely Form</h1>
+		<ul>
+			<li>
+				<label for="tName">Name</label>
+				<input id="tName" type="text" placeholder="Your Name" />
+			</li>
+			<li>
+				<label for="tEmail">eMail</label>
+				<input id="tEmail" type="text" placeholder="Your Email" />
+			</li>
+			<li>
+				<label for="tPhone">Phone</label>
+				<input id="tPhone" type="text" placeholder="e.g. 40 343434" />
+			</li>
+			<li>
+				<label for="">I read the TandC</label>
+			</li>
+			<li>
+				<button type="submit" id="bSubmit">Send me</button>
+			</li>
+		</ul>
+	</form>
+	
 	<script>
 
 	</script>
