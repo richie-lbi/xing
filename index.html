@@ -32,7 +32,7 @@
 		label.tc{
 			font-weight: 100;
 		}
-		input[type=text]{
+		input[type=text],input[type=number]{
 			padding: 2px 5px;
 			width: 232px;
 			border: 1px solid #ccc;
@@ -64,6 +64,14 @@
 			position: absolute;
 			font-weight: bold;
 		}
+		/* if error message was required */
+		span{
+			display: none;
+			font-style: italic;
+		}
+		.invalid span{
+			display: block;
+		}
 	</style>
 </head>
 <body>
@@ -75,12 +83,13 @@
 			<ul>
 				<li>
 					<label for="tName">Name</label>
-					<!-- using html5 placeholder attribute, could use Modernizr to feature detect on older browsers to provide alternative -->
 					<input id="tName" type="text" placeholder="Your Name" />
+					<!-- <span>Name is mandatory and must have at least 3 characters</span> -->
 				</li>
 				<li>
 					<label for="tEmail">eMail</label>
 					<input id="tEmail" type="text" placeholder="Your Mail" />
+					<!-- <span>Email must contain @ sign and match a top-level domain</span> -->
 				</li>
 				<li>
 					<label for="tPhone">Phone</label>
@@ -89,6 +98,7 @@
 				<li>
 					<label for="cTC" class="tc">I read the TandC</label>
 					<input id="cTC" type="checkbox" />
+					<!-- <span>You must agree to the terms and conditions</span> -->
 				</li>
 				<li>
 					<button type="submit" id="bSubmit">Send me</button>
@@ -101,9 +111,17 @@
 		
 		// MY ASSUMPTIONS ON THE BREIF
 		
+		// A successfully submitted form results in an alert box
+		
+		// I didn't make any attempt to decide an action or method for the form
+		
 		// I interpreted 'modern browsers' in the brief as IE8 and above.
 		// Although some CSS and HTML5 elements I used aren't supported on IE8,
-		// they degrade in a way which doesn't affect the functionality of the form
+		// they degrade in a way which doesn't affect the functionality of the form.
+		// I opted out of dedicated html5 inputs like number and email for robustness
+		
+		// E.G. I used html5 placeholder attribute, could use Modernizr to feature detect 
+		// on older browsers to provide alternative
 		
 		// Even though the brief didn't specify TC's were mandatory, I assumed the 
 		// checkbox would need to be ticked for successful submission
@@ -115,13 +133,19 @@
 		// Since there wasn't a PSD to match the font-family/size I've assumed the 
 		// font was Arial (the font sizes are also approximate)
 		
+		// I used asterisks and a red coloured label to denote invalid entries
+		// As an extra, I included [commented out] some capability for for error 
+		// message text next to inputs and some basic styling
+		
+		// Validated against http://validator.w3.org/check
+		
 		var xing = (function(){
 
 			var form = document.getElementById('personalDetails'),
-			nameInput = document.getElementById('tName'),
-			emailInput = document.getElementById('tEmail'),
-			tcInput = document.getElementById('cTC'),
-			submitBtn = document.getElementById('bSubmit'); 
+				nameInput = document.getElementById('tName'),
+				emailInput = document.getElementById('tEmail'),
+				tcInput = document.getElementById('cTC'),
+				submitBtn = document.getElementById('bSubmit'); 
 			
 			// events
 			submitBtn.onclick = function(e){ return validateForm(); }
@@ -143,7 +167,7 @@
 				return false;
 			}
 			
-			// DOM stuff
+			// DOM manipulation
 			function showValidationErrors(el, valid){
 				if(!valid){
 					el.parentNode.setAttribute('class','invalid');
